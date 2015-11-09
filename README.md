@@ -1,1 +1,0 @@
-# librarian-books-service-configuration
