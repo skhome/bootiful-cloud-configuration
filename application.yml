@@ -5,7 +5,7 @@ info:
 ---
 
 spring:
-  profiles: lattice
+  profiles: cloud
 
 info:
   index: ${vcap.application.instance_id}
