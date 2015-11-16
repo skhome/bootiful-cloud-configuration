@@ -1,8 +1,23 @@
+
+info:
+  name: ${spring.application.name}
+  index: ${vcap.application.instance_id}
+
+---
+
+spring:
+  profiles: cloud
+
 eureka:
   instance:
-    leaseRenewalIntervalInSeconds: 10
+    hostname: ${vcap.application.uris[0]:localhost}
+    nonSecurePort: 80
+    leaseRenewalIntervalInSeconds: 5
     metadataMap:
-      instanceId: ${spring.application.name}:${server.port:8080}
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+
   client:
+    region: default
+    registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761}/eureka/
