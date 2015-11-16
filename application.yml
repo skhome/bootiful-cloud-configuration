@@ -22,4 +22,4 @@ eureka:
     region: default
     registryFetchIntervalSeconds: 5
     serviceUrl:
-      defaultZone: ${vcap.services.eureka-server.credentials.uri:http://localhost:8761}/eureka/
+      defaultZone: ${vcap.services.eureka-server.credentials.uri:${EUREKA_SERVER_URI:http://localhost:8761}}/eureka/
