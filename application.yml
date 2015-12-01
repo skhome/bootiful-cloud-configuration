@@ -2,24 +2,22 @@
 info:
   name: ${spring.application.name}
 
+eureka:
+  instance:
+    hostname: ${cf.instance.ip:localhost}
+    nonSecurePort: ${cf.instance.port:80}
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${instance.guid}:${spring.application.name}:${server.port:8080}
+
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.application.application_uris[0]:http://localhost:8761}/eureka/
+
 ---
 
 spring:
   profiles: cloud
 
 info:
-  index: ${vcap.application.instance_id}
-
-eureka:
-  instance:
-    hostname: ${vcap.application.uris[0]:localhost}
-    nonSecurePort: 80
-    leaseRenewalIntervalInSeconds: 5
-    metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
-
-  client:
-    region: default
-    registryFetchIntervalSeconds: 5
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVER_URI:http://localhost:8761}/eureka/
+  index: ${cf.instance_index}
