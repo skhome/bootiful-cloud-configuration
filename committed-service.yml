@@ -3,3 +3,9 @@ server:
 
 info:
   message: Hello World!!!
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input: commit-messages
