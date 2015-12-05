@@ -2,16 +2,6 @@
 info:
   name: ${spring.application.name}
 
-eureka:
-  instance:
-    hostname: ${vcap.application.uris[0]:localhost}
-    nonSecurePort: 80
-    leaseRenewalIntervalInSeconds: 10
-    metadataMap:
-      instanceId: ${instance.guid}:${spring.application.name}:${server.port:8080}
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
 
 spring:
   rabbitmq:
@@ -31,6 +21,12 @@ info:
   index: ${cf.instance_index}
 
 eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    nonSecurePort: 80
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${instance.guid}:${spring.application.name}:${server.port:8080}
   client:
     serviceUrl:
       defaultZone: http://eureka-server.52.29.74.215.xip.io/eureka/
