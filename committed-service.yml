@@ -2,7 +2,7 @@ server:
   port: 8080
 
 info:
-  message: Hello World!!!
+  message: Hello Java Jam!
 
 spring:
   cloud:

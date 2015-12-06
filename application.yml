@@ -2,13 +2,18 @@
 info:
   name: ${spring.application.name}
 
-
 spring:
   rabbitmq:
     username: knfncoapp
     password: gifythY2VwviipYDFAQH
     host: localhost
     virtual-host: knfn
+  sleuth:
+    log:
+      json:
+        enabled: true
+  zipkin:
+    host: localhost
 
 ---
 
