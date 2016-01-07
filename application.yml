@@ -38,4 +38,4 @@ eureka:
     leaseRenewalIntervalInSeconds: 10
   client:
     serviceUrl:
-      defaultZone: ${vcap.services.eureka-service.credentials.url:http://localhost:8671}/eureka/
+      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://localhost:8671}/eureka/
